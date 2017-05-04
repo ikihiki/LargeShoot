@@ -13,6 +13,11 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "LargeShoot", "src\app\Large
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Thread", "src\core\Thread\Thread.vcxproj", "{0B587BD8-CB11-4C74-8C6F-53E97C8AA893}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "EngineTest", "test\EngineTest\EngineTest.vcxproj", "{F6BE741C-4824-45FC-98D0-8D2D242FE358}"
+	ProjectSection(ProjectDependencies) = postProject
+		{3E9464BA-D91D-401A-A955-A0DBCE82A9D4} = {3E9464BA-D91D-401A-A955-A0DBCE82A9D4}
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -61,6 +66,14 @@ Global
 		{0B587BD8-CB11-4C74-8C6F-53E97C8AA893}.Release|x64.Build.0 = Release|x64
 		{0B587BD8-CB11-4C74-8C6F-53E97C8AA893}.Release|x86.ActiveCfg = Release|Win32
 		{0B587BD8-CB11-4C74-8C6F-53E97C8AA893}.Release|x86.Build.0 = Release|Win32
+		{F6BE741C-4824-45FC-98D0-8D2D242FE358}.Debug|x64.ActiveCfg = Debug|x64
+		{F6BE741C-4824-45FC-98D0-8D2D242FE358}.Debug|x64.Build.0 = Debug|x64
+		{F6BE741C-4824-45FC-98D0-8D2D242FE358}.Debug|x86.ActiveCfg = Debug|Win32
+		{F6BE741C-4824-45FC-98D0-8D2D242FE358}.Debug|x86.Build.0 = Debug|Win32
+		{F6BE741C-4824-45FC-98D0-8D2D242FE358}.Release|x64.ActiveCfg = Release|x64
+		{F6BE741C-4824-45FC-98D0-8D2D242FE358}.Release|x64.Build.0 = Release|x64
+		{F6BE741C-4824-45FC-98D0-8D2D242FE358}.Release|x86.ActiveCfg = Release|Win32
+		{F6BE741C-4824-45FC-98D0-8D2D242FE358}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

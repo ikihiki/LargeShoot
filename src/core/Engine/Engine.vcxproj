@@ -72,27 +72,27 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <OutDir>$(SolutionDir)out\$(PlatformTarget)\$(Configuration)\</OutDir>
-    <IntDir>$(SolutionDir)intermediate\$(PlatformTarget)\$(Configuration)\</IntDir>
+    <IntDir>$(SolutionDir)intermediate\$(PlatformTarget)\$(Configuration)\$(ProjectName\)</IntDir>
     <IncludePath>$(SolutionDir)lib\include\;$(IncludePath)</IncludePath>
-    <LibraryPath>$(SolutionDir)lib\$(PlatformTarget)\;$(LibraryPath)</LibraryPath>
+    <LibraryPath>$(SolutionDir)lib\$(Configuration)\$(PlatformTarget)\;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <OutDir>$(SolutionDir)out\$(PlatformTarget)\$(Configuration)\</OutDir>
-    <IntDir>$(SolutionDir)intermediate\$(PlatformTarget)\$(Configuration)\</IntDir>
+    <IntDir>$(SolutionDir)intermediate\$(PlatformTarget)\$(Configuration)\$(ProjectName\)</IntDir>
     <IncludePath>$(SolutionDir)lib\include\;$(IncludePath)</IncludePath>
-    <LibraryPath>$(SolutionDir)lib\$(PlatformTarget)\;$(LibraryPath)</LibraryPath>
+    <LibraryPath>$(SolutionDir)lib\$(Configuration)\$(PlatformTarget)\;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <OutDir>$(SolutionDir)out\$(PlatformTarget)\$(Configuration)\</OutDir>
-    <IntDir>$(SolutionDir)intermediate\$(PlatformTarget)\$(Configuration)\</IntDir>
+    <IntDir>$(SolutionDir)intermediate\$(PlatformTarget)\$(Configuration)\$(ProjectName\)</IntDir>
     <IncludePath>$(SolutionDir)lib\include\;$(IncludePath)</IncludePath>
-    <LibraryPath>$(SolutionDir)lib\$(PlatformTarget)\;$(LibraryPath)</LibraryPath>
+    <LibraryPath>$(SolutionDir)lib\$(Configuration)\$(PlatformTarget)\;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <OutDir>$(SolutionDir)out\$(PlatformTarget)\$(Configuration)\</OutDir>
-    <IntDir>$(SolutionDir)intermediate\$(PlatformTarget)\$(Configuration)\</IntDir>
+    <IntDir>$(SolutionDir)intermediate\$(PlatformTarget)\$(Configuration)\$(ProjectName\)</IntDir>
     <IncludePath>$(SolutionDir)lib\include\;$(IncludePath)</IncludePath>
-    <LibraryPath>$(SolutionDir)lib\$(PlatformTarget)\;$(LibraryPath)</LibraryPath>
+    <LibraryPath>$(SolutionDir)lib\$(Configuration)\$(PlatformTarget)\;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -101,12 +101,13 @@
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <LanguageStandard>stdcpplatest</LanguageStandard>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
     </Link>
     <Lib>
-      <AdditionalLibraryDirectories>$(SolutionDir)lib\$(PlatformTarget)\;$(SolutionDir)out\$(PlatformTarget)\$(Configuration)\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(SolutionDir)lib\$(Configuration)\$(PlatformTarget)\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Lib>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -116,12 +117,13 @@
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <LanguageStandard>stdcpplatest</LanguageStandard>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
     </Link>
     <Lib>
-      <AdditionalLibraryDirectories>$(SolutionDir)lib\$(PlatformTarget)\;$(SolutionDir)out\$(PlatformTarget)\$(Configuration)\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(SolutionDir)lib\$(Configuration)\$(PlatformTarget)\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Lib>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -133,6 +135,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <LanguageStandard>stdcpplatest</LanguageStandard>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -140,7 +143,7 @@
       <OptimizeReferences>true</OptimizeReferences>
     </Link>
     <Lib>
-      <AdditionalLibraryDirectories>$(SolutionDir)lib\$(PlatformTarget)\;$(SolutionDir)out\$(PlatformTarget)\$(Configuration)\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(SolutionDir)lib\$(Configuration)\$(PlatformTarget)\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Lib>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -152,6 +155,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <LanguageStandard>stdcpplatest</LanguageStandard>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -159,7 +163,7 @@
       <OptimizeReferences>true</OptimizeReferences>
     </Link>
     <Lib>
-      <AdditionalLibraryDirectories>$(SolutionDir)lib\$(PlatformTarget)\;$(SolutionDir)out\$(PlatformTarget)\$(Configuration)\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(SolutionDir)lib\$(Configuration)\$(PlatformTarget)\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
@@ -168,6 +172,7 @@
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Id.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
