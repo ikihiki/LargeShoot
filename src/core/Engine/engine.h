@@ -1,41 +1,61 @@
 #pragma once
 #include <cstdint>
+#include <unordered_map>
+#include <typeindex>
+#include "Id.h"
+#include "TypeId.h"
+#include "TypeRegistory.h"
+#include "../Thread/thread.h"
+#include "../Entities/EntityManager.h"
 
-#define PROPLIKE_R(type,name) type name();
-#define PROPLIKE_RNE(type,name) type name() noexcept;
-
-#define PROPLIKE_RNE_WNE(type,name) type name() noexcept; \
-							type name(type value) noexcept;
-
-#define PROPLIKE_RC(type,name) type name() const;
-
-#define PROPLIKE_RCNE(type,name) type name() const noexcept;
-
-#define PROPLIKE_RC_W(type,name) type name() const; \
-							type name(type value);
-
-#define PROPLIKE_RCNE_W(type,name) type name() const noexcept; \
-							type name(type value);
-
-#define PROPLIKE_RCNE_WNE(type,name) type name() const noexcept; \
-							type name(type value) noexcept;
 namespace LargeShoot
 {
-	class Id
+
+	class Object
 	{
-		uint64_t _id;
+	protected:
+		Id _id;
 	public:
-		Id(uint8_t computerNo, uint8_t threadNo, uint16_t objectType,  uint32_t timestamp);
-		PROPLIKE_RCNE_WNE(uint8_t,ComputerNo)
-		PROPLIKE_RCNE_WNE(uint8_t, ThreadNo)
-		PROPLIKE_RCNE_WNE(uint16_t, ObjectType)
-		PROPLIKE_RCNE_WNE(uint32_t, Timestamp)
+		explicit Object(Id id);
+		Id Id() const noexcept;
+		virtual ~Object();
 	};
 
-
-	class IExecutable
+	class Engine
 	{
-		virtual void execute() = 0;
-		virtual ~IExecutable(){}
+		std::unique_ptr<ThreadManager> threaadManager_ = nullptr;
+		std::unique_ptr<EntityManager> entityManager_ = nullptr;
+		std::unique_ptr<TypeRegistory> typeRegistory_ = nullptr;
+
+		void preConfig()
+		{
+			typeRegistory_ = std::make_unique<TypeRegistory>();
+			ThreadManager::registerType(*typeRegistory_);
+			threaadManager_ = std::make_unique<LargeShoot::ThreadManager>(Id(0, 0, typeRegistory_->getTypeId<LargeShoot::ThreadManager>(), 0), 4);
+
+		}
+
+		virtual void config(){}
+
+		void postConfig()
+		{
+			
+		}
+
+
+	protected:
+		ThreadManager& ThreadManager() const { return *threaadManager_; }
+		EntityManager& EntityManager() const { return *entityManager_; }
+		
+	public:
+		void run()
+		{
+			preConfig();
+			config();
+			postConfig();
+			ThreadManager().addTask(nullptr);
+			threaadManager_->waitAllthreads();
+		}
 	};
+
 }
